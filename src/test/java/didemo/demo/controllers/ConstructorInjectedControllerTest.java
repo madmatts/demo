@@ -6,19 +6,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PropertyInjectedControllerTest {
+public class ConstructorInjectedControllerTest {
 
-    private PropertyInjectedController propertyInjectedController;
+    private ConstructorInjectedController constructorInjectedController;
 
     @Before
     public void setUp() throws Exception{
-        this.propertyInjectedController = new PropertyInjectedController();
-        this.propertyInjectedController.greetingService = new GreetingServiceImpl();
+        this.constructorInjectedController = new ConstructorInjectedController( new GreetingServiceImpl());
     }
 
     @Test
     public void testGreeting() throws Exception {
-        assertEquals(GreetingServiceImpl.HELLO_GURUS, propertyInjectedController.sayHello());
+        assertEquals(GreetingServiceImpl.HELLO_GURUS, constructorInjectedController.sayHello());
     }
 
 }
